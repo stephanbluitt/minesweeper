@@ -17,8 +17,15 @@ int main()
     printf("\ndigite el valor de 'c'=");
     scanf("%f",&c);
     printf("\n");
+    calculos();
 
-    float discriminante;
+
+    return 0;
+}
+
+
+void calculos(){
+        float discriminante;
     float raiz;
 
     discriminante= (b*b)-(4*a*c);
@@ -35,6 +42,4 @@ int main()
     printf("posibles respuestas:%f y %f",x1,x2);
     system("pause");
     }
-
-    return 0;
-}
+    }
