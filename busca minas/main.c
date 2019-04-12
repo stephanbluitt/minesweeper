@@ -5,9 +5,12 @@
 #include <conio.h>
 #include <windows.h>
 
+L=8;
 main()
 {
-    char vectormina[8][8],nivel, vectormuerte[8][8], fin, condicion;
+
+    int A;
+    char vectormina[L][L],nivel, vectormuerte[L][L], fin, condicion;
     int  minas=0, clicki=0, clickj=0, posicion=0, acum = 0;
     int i=0,j=0;
     int s=0, m=0, h=0;
@@ -15,6 +18,9 @@ main()
     system("color f");
 
     Bienvenida();
+    printf("digite el tamano de 'fila columna' de la matris ");
+    scanf("%d",&A);
+    L=A;
     Eleccion(&nivel);
     Inicializar(vectormina, vectormuerte);
     Random(vectormuerte, &nivel, i, j);
@@ -37,10 +43,10 @@ main()
         {
             fin = 'X';
 
-            for (int i=0; i<8; i++)
+            for (int i=0; i<L; i++)
             {
 
-                for(int j=0; j<8; j++)
+                for(int j=L; j<L; j++)
                 {
 
                     if (vectormuerte[i][j]=='X')
@@ -74,37 +80,9 @@ main()
 void Bienvenida()
 {
     char rsp;
-    printf("\n Bienvenidos al buscaMinas\n");
-    printf("\n Sabe usted como jugar BuscaMinas? Si(Presione cualquier tecla), No(n)\n");
-    scanf(" %c", &rsp);
-    if (rsp == 'n'|| rsp == 'N')
-    {
-        system("cls");
-        printf("\n Buscaminas es un juego basado en un tablero, en este caso de 8 filas\n");
-        printf("\n y 8 columnas. El juego, dependiendo del nivel que usted seleccione, \n");
-        printf("\n arrojara un numero de minas al tablero. Jugada tras jugada, debera \n");
-        printf("\n ingresar una coordenada con dos posibilidades: abrir la casilla escogida\n");
-        printf("\n o colocar una bandera 'B', indicando que cree que ahi se encuentra una mina.\n");
-        printf("\n Al seleccionar una casilla si se encuentra una mina aparecera una 'X', de\n");
-        printf("\n de lo contrario aparecera un numero, que indicara el numero de minas que\n");
-        printf("\n se encuentran en el perimetro; asi: si aparece el numero 1, significa que\n");
-        printf("\n hay una mina en el perimetro de esa casilla.\n");
-        printf("\n El objetivo del buscaminas es lograr descubrir las casillas minadas, \n");
-        printf("\n pero sin activarlas, es decir, localizarlas por descarte, prestando \n");
-        printf("\n atencion a los cuadros numericos que ayudan a revelar la ubicacion de las \n");
-        printf("\n minas\n");
-        printf("\n \n");
-        printf("\n EL jugador podra marcar las minas para bloquearlas y acumular puntos\n");
-        printf("\n Si el jugador marca una casilla sin minas, entonces se le sumara un punto\n");
-        printf("\n La partida habra terminado cuando el jugador active una mina\n");
-        printf("\n Gana el jugador que obtenga mas puntos siempre y cuando el puntaje sea positivo\n");
-        system("pause");
-    }
-    else if  (rsp == 'S'|| rsp == 's')
-    {
-        printf("\n Listo para jugar, solo \n");
-        system("pause");
-    }
+    printf("buscaMinas\n");
+    system("pause");
+
 }
 
 void Eleccion(char *nivel)
@@ -113,12 +91,12 @@ void Eleccion(char *nivel)
 
     system("cls");
     printf("\n Ingrese el nivel de dificultad en el cual desea jugar:\n");
-    printf("\n Facil<1>, Intermedio <2>, Dificil <3>\n");
-    printf("\n Facil:      para jugar con 3 minas en tablero.\n");
-    printf("\n Intermedio: para jugar con 6 minas en tablero.\n");
-    printf("\n Dificil:    para jugar con 10 minas en tablero.\n");
+    printf("\n 1, 2, 3\n");
+    printf("\n Facil: 3 minas\n");
+    printf("\n Intermedio:6 minas \n");
+    printf("\n Dificil10 minas\n");
 
-    do                           // INICIO VALIDACION
+    do
     {
         scanf(" %c", &*nivel);
         system("cls");
@@ -128,14 +106,14 @@ void Eleccion(char *nivel)
             printf("\n El nivel ingresado es incorrecto por favor ingrese un dato valido\n\n");
         }
     }
-    while( *nivel!='1' && *nivel!='2' && *nivel!='3' );      // FINAL VALIDACION
+    while( *nivel!='1' && *nivel!='2' && *nivel!='3' );
 }
 
-void Inicializar(char vectormina[][8], char vectormuerte[][8])
+void Inicializar(char vectormina[][L], char vectormuerte[][L])
 {
-    for(int i=0; i<8; i++)// For para la matriz base
+    for(int i=0; i<L; i++)// For para la matriz base
     {
-        for(int j=0; j<8; j++)
+        for(int j=0; j<L; j++)
         {
             vectormina[i][j]='$';
             vectormuerte[i][j]=0;
@@ -143,7 +121,7 @@ void Inicializar(char vectormina[][8], char vectormuerte[][8])
     }
 }
 
-void Random(char vectormuerte[][8], char *nivel, int i, int j)
+void Random(char vectormuerte[][L], char *nivel, int i, int j)
 {
     if (*nivel == '1')
     {
@@ -154,8 +132,8 @@ void Random(char vectormuerte[][8], char *nivel, int i, int j)
         {
             if(vectormuerte[i][j] != 'X')
             {
-                i = (rand() % 8);
-                j = (rand() % 8);
+                i = (rand() % L);
+                j = (rand() % L);
             }
             else if(vectormuerte[i][j] == 'X')
             {
@@ -174,8 +152,8 @@ void Random(char vectormuerte[][8], char *nivel, int i, int j)
         {
             if(vectormuerte[i][j] != 'X')
             {
-                i = (rand() % 8);
-                j = (rand() % 8);
+                i = (rand() % L);
+                j = (rand() % L);
             }
             else if(vectormuerte[i][j] == 'X')
             {
@@ -194,8 +172,8 @@ void Random(char vectormuerte[][8], char *nivel, int i, int j)
         {
             if(vectormuerte[i][j] != 'X')
             {
-                i = (rand() % 8);
-                j = (rand() % 8);
+                i = (rand() % L);
+                j = (rand() % L);
             }
             else if(vectormuerte[i][j] == 'X')
             {
@@ -208,21 +186,21 @@ void Random(char vectormuerte[][8], char *nivel, int i, int j)
     }
 }
 
-void Mostrar(char vectormina[][8])
+void Mostrar(char vectormina[][L])
 {
 
     printf("\n\n");
     printf("                   ");
-    for(int i = 1; i <= 8; i++)
+    for(int i = 1; i <= L; i++)
     {
         printf("( %i )", i);
     }
     printf("\n");
 
-    for(int i = 1; i <= 8; i++)
+    for(int i = 1; i <= L; i++)
     {
         printf("\n              ( %i )", i);
-        for(int j = 1; j <= 8; j++)
+        for(int j = 1; j <= L; j++)
         {
             printf("[ %c ]", vectormina[i-1][j-1]);
         }
@@ -246,7 +224,7 @@ void Pregunta(char *condicion)
 
 }
 
-void Bandera(char vectormuerte[][8], char vectormina[][8], int *clicki, int *clickj,  int *acum)
+void Bandera(char vectormuerte[][L], char vectormina[][L], int *clicki, int *clickj,  int *acum)
 {
     do
     {
@@ -273,7 +251,7 @@ void Bandera(char vectormuerte[][8], char vectormina[][8], int *clicki, int *cli
     }
 }
 
-void Coordenada(char vectormina[][8], char vectormuerte[][8], int *clicki, int *clickj, int posicion, int *acum)
+void Coordenada(char vectormina[][L], char vectormuerte[][L], int *clicki, int *clickj, int posicion, int *acum)
 {
     do
     {
@@ -341,7 +319,7 @@ void Coordenada(char vectormina[][8], char vectormuerte[][8], int *clicki, int *
 
                         }
                     }
-                    while( (*clicki-1<8) );
+                    while( (*clicki-1<L) );
                 }
             }
         }
@@ -381,7 +359,7 @@ void Coordenada(char vectormina[][8], char vectormuerte[][8], int *clicki, int *
 
                         }
                     }
-                    while( (*clickj-1<8) );
+                    while( (*clickj-1<L) );
                 }
             }
         }
@@ -421,7 +399,7 @@ void Coordenada(char vectormina[][8], char vectormuerte[][8], int *clicki, int *
 
                         }
                     }
-                    while( (*clicki-1<0) && (*clickj-1<8) );
+                    while( (*clicki-1<0) && (*clickj-1<L) );
                 }
             }
         }
@@ -441,7 +419,7 @@ void Coordenada(char vectormina[][8], char vectormuerte[][8], int *clicki, int *
 
                         }
                     }
-                    while( (*clicki-1<8) && (*clickj-1<0) );
+                    while( (*clicki-1<L) && (*clickj-1<0) );
                 }
             }
         }
