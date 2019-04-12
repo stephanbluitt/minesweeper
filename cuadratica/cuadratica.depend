@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1555009743 source:c:\users\stephan\documents\github\tarea-2\cuadratica\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

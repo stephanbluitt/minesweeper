@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1554499269 source:c:\users\stephan\documents\github\tarea-2\busca minas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<conio.h>
+	<windows.h>
+
