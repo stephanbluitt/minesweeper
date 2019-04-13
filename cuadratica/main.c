@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+// 95/100
 void calculos();
-    float a,b,c;
+    float a,b,c; // hubiese sido mejor pasar estas variables a calculos() como parametro
     float x1,x2;
 
 int main()
