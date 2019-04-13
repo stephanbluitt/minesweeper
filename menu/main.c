@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //calcular indice, entrar, quitar materia, 1 solo estudiante
-
+// 100/100
 void agregar_materias();
 void indice();
 void quitarmateria();
