@@ -4,7 +4,8 @@
 #include <math.h>
 #include <conio.h>
 #include <windows.h>
-
+// 90/100
+// El buscaminas tenía que soportar tamaño variable -10
 L=8;
 main()
 {
