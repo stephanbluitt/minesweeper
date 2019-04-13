@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 // es tomar dos numeros, invertirlos los dos, sumarlos y volverlos a inverti
+// 100/100
 int InvertirNum(int N)
 {
   int Invertido=0, Resto;
