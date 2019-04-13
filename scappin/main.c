@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+// 80/100
+// Falto usar punteros para extraer texto -20
 void verificar_info(info[])
 char * LeerDatos(char nombreArchivo[]);
 int buscar(char info[], char tag[], int j);
